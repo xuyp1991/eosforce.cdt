@@ -1,7 +1,7 @@
-### eosio-ld
+### eosforce-ld
 ---
 ```
-USAGE: eosio-ld [options] <input file> ...
+USAGE: eosforce-ld [options] <input file> ...
 
 OPTIONS:
 

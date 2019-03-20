@@ -85,6 +85,26 @@ extern "C" {
       return (uint32_t)( current_time() / 1000000 );
    }
 
+   /**
+    *  Return curr block num
+    *  @return - current block num
+    */
+   uint32_t  current_block_num();
+
+   /**
+    *  Return if a function is open in curr block num
+    *  @param func_code - func code
+    *  @return - 0 to not open, 1 to has open
+    */
+   int is_func_open( uint64_t func_code );
+
+   /**
+   *  Return num config on chain by typ
+   *  @param typ - config typ id
+   *  @return - num config by typ
+   */
+   int64_t get_num_config_on_chain( uint64_t typ );
+
 #ifdef __cplusplus
 }
 #endif

@@ -8,6 +8,7 @@
 #include "time.hpp"
 #include "serialize.hpp"
 #include "system.hpp"
+#include "asset.hpp"
 
 #include <vector>
 
