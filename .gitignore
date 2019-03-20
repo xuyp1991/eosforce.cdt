@@ -41,3 +41,5 @@ build/*
 
 cmake-build-debug/
 cmake-build-release/
+
+examples/hello/build/

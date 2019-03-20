@@ -13,65 +13,65 @@ EOSIO.CDT currently supports Mac OS X brew, Linux x86_64 Debian packages, and Li
 
 #### Mac OS X Brew Install
 ```sh
-$ brew tap eosio/eosio.cdt
-$ brew install eosio.cdt
+$ brew tap eosforce/eosforce.cdt
+$ brew install eosforce.cdt
 ```
 #### Mac OS X Brew Uninstall
 ```sh
-$ brew remove eosio.cdt
+$ brew remove eosforce.cdt
 ```
 #### Debian Package Install
 ```sh
-$ wget https://github.com/eosio/eosio.cdt/releases/download/v1.5.0/eosio.cdt_1.5.0-1_amd64.deb
-$ sudo apt install ./eosio.cdt_1.5.0-1_amd64.deb
+$ wget https://github.com/eosio/eosforce.cdt/releases/download/v1.5.0/eosforce.cdt_1.5.0-1_amd64.deb
+$ sudo apt install ./eosforce.cdt_1.5.0-1_amd64.deb
 ```
 #### Debian Package Uninstall
 ```sh
-$ sudo apt remove eosio.cdt
+$ sudo apt remove eosforce.cdt
 ```
 
 #### Fedora RPM Package Install
 ```sh
-$ wget https://github.com/eosio/eosio.cdt/releases/download/v1.5.0/eosio.cdt-1.5.0-1.fedora-x86_64.rpm
-$ sudo yum install ./eosio.cdt-1.5.0-1.fedora-x86_64.rpm
+$ wget https://github.com/eosio/eosforce.cdt/releases/download/v1.5.0/eosforce.cdt-1.5.0-1.fedora-x86_64.rpm
+$ sudo yum install ./eosforce.cdt-1.5.0-1.fedora-x86_64.rpm
 ```
 
 #### Fedora RPM Package Uninstall
 ```sh
-$ sudo yum remove eosio.cdt
+$ sudo yum remove eosforce.cdt
 ```
 
 #### Centos RPM Package Install
 ```sh
-$ wget https://github.com/eosio/eosio.cdt/releases/download/v1.5.0/eosio.cdt-1.5.0-1.centos-x86_64.rpm
-$ sudo yum install ./eosio.cdt-1.5.0-1.centos-x86_64.rpm
+$ wget https://github.com/eosio/eosforce.cdt/releases/download/v1.5.0/eosforce.cdt-1.5.0-1.centos-x86_64.rpm
+$ sudo yum install ./eosforce.cdt-1.5.0-1.centos-x86_64.rpm
 ```
 
 #### Centos RPM Package Uninstall
 ```sh
-$ sudo yum remove eosio.cdt
+$ sudo yum remove eosforce.cdt
 ```
 
 ### Guided Installation (Building from Scratch)
 ```sh
-$ git clone --recursive https://github.com/eosio/eosio.cdt
-$ cd eosio.cdt
+$ git clone --recursive https://github.com/eosforce/eosforce.cdt
+$ cd eosforce.cdt
 $ ./build.sh
 $ sudo ./install.sh
 ```
 
 ### Installed Tools
 ---
-* eosio-cpp
-* eosio-cc
-* eosio-ld
-* eosio-init
-* eosio-abigen
-* eosio-abidiff
-* eosio-pp (post processing pass for WASM, automatically runs with eosio-cpp and eosio-ld)
-* eosio-wasm2wast
-* eosio-wast2wasm
-* eosio-ranlib
-* eosio-ar
-* eosio-objdump
-* eosio-readelf
+* eosforce-cpp
+* eosforce-cc
+* eosforce-ld
+* eosforce-init
+* eosforce-abigen
+* eosforce-abidiff
+* eosforce-pp (post processing pass for WASM, automatically runs with eosforce-cpp and eosforce-ld)
+* eosforce-wasm2wast
+* eosforce-wast2wasm
+* eosforce-ranlib
+* eosforce-ar
+* eosforce-objdump
+* eosforce-readelf

@@ -114,8 +114,8 @@
 - Added `CONTRACT` macro which is simply a shortcut for `class [[eosio::contract]]`.
 
 ### CMake
-- Added `eosio.cdt-config.cmake` to allow for `find_package(eosio.cdt)`. See eosio.cdt/examples/hello or eosio.cdt/examples/template for an example.
-- Added new macro `add_contract`. This new contract takes a contract name, cmake target, then any normal arguments you would give to `add_executable`. See eosio.cdt/examples/hello or eosio.cdt/examples/template.
+- Added `eosforce.cdt-config.cmake` to allow for `find_package(eosforce.cdt)`. See eosforce.cdt/examples/hello or eosforce.cdt/examples/template for an example.
+- Added new macro `add_contract`. This new contract takes a contract name, cmake target, then any normal arguments you would give to `add_executable`. See eosforce.cdt/examples/hello or eosforce.cdt/examples/template.
 - New version checking mechanism is included. See eosio.contracts/CMakeLists.txt to see this in use.
 
 ### libc
@@ -128,7 +128,7 @@
 
 ### attributes
 - Added `[[eosio::ignore]]` attribute to flag a type as being ignored by the deserializer. This attribute is primarily only used for internal use within eosiolib.
-- Added `[[eosio::contract]]` attribute. This new attribute is used to mark a contract class as "contract" with the name being either the C++ name of the class or a user specified name (i.e. `[[eosio::contract("somecontract")]]`). This attribute can also be used in conjunction with the `eosio::action` and `eosio::table` attributes for tables that you would like to define outside of the `eosio::contract` class.  This is used in conjunction with either the raw `eosio-cpp` option `--contract <name>`, `-o <name>.wasm` or with CMake `add_contract`.  It acts as a filter enabling contract developers to include a header file with attributes from another contract (e.g. eosio.token) while generating an ABI devoid of those actions and tables.
+- Added `[[eosio::contract]]` attribute. This new attribute is used to mark a contract class as "contract" with the name being either the C++ name of the class or a user specified name (i.e. `[[eosio::contract("somecontract")]]`). This attribute can also be used in conjunction with the `eosio::action` and `eosio::table` attributes for tables that you would like to define outside of the `eosio::contract` class.  This is used in conjunction with either the raw `eosforce-cpp` option `--contract <name>`, `-o <name>.wasm` or with CMake `add_contract`.  It acts as a filter enabling contract developers to include a header file with attributes from another contract (e.g. eosio.token) while generating an ABI devoid of those actions and tables.
   ```c++
   #include <eosiolib/eosio.hpp>
   using namespace eosio;
@@ -151,7 +151,7 @@
   typedef eosio::multi_index<"testtabb"_n, tabb> table_b;
   EOSIO_DISPATCH( test, (acta) )
   ```
-  The above code will produce the tables `testtaba` and `testtabb` in your ABI. Example: `eosio-cpp -abigen test.cpp -o test.wasm` will mark this compilation and ABI generation for the `eosio::contract` `test`. The same thing can be done with `eosio-cpp -abigen test.cpp -o test_contract.wasm --contract test` or with the CMake command `add_contract( test, test_contract, test.cpp )`. Either of the previous two approaches will produce a test_contract.wasm and test_contract.abi generated under the context of the contract name of `test`.
+  The above code will produce the tables `testtaba` and `testtabb` in your ABI. Example: `eosforce-cpp -abigen test.cpp -o test.wasm` will mark this compilation and ABI generation for the `eosio::contract` `test`. The same thing can be done with `eosforce-cpp -abigen test.cpp -o test_contract.wasm --contract test` or with the CMake command `add_contract( test, test_contract, test.cpp )`. Either of the previous two approaches will produce a test_contract.wasm and test_contract.abi generated under the context of the contract name of `test`.
 
 ### Boost
 - Boost is now part of the library. No more external dependence on Boost and all system inclusion are within it's `sysroot`. (Boost will be removed in a future release.)
@@ -185,7 +185,7 @@ struct __attribute__((eosio_action)) testa {
    EOSLIB_SERIALIZE( testa, (n) )
 };
 ```
-If your action name is not a valid [EOSIO name](https://developers.eos.io/eosio-cpp/docs/naming-conventions) you can explicitly specify the name in the attribute ```c++ [[eosio::action("<valid action name>")]]```
+If your action name is not a valid [EOSIO name](https://developers.eos.io/eosforce-cpp/docs/naming-conventions) you can explicitly specify the name in the attribute ```c++ [[eosio::action("<valid action name>")]]```
 
 Example (two ways to declare a table for ABI generation):
 ```
@@ -203,19 +203,19 @@ typedef eosio::multi_index<"tablename"_n, testtable> testtable_t;
 ```
 If you don't want to use the multi-index you can explicitly specify the name in the attribute ```c++ [[eosio::table("<valid action name>")]]```.
 
-For an example contract of ABI generation please see the file ./examples/abigen_test/test.cpp. You can generate the ABI for this file with `eosio-abigen test.cpp --output=test.abi`.
+For an example contract of ABI generation please see the file ./examples/abigen_test/test.cpp. You can generate the ABI for this file with `eosforce-abigen test.cpp --output=test.abi`.
 
 ### Fixing an ABI or Writing an ABI Manually
 - The sections to the ABI are pretty simple to understand and the syntax is purely JSON, so it is reasonable to write an ABI file manually.
 - The ABI generation will never be completely perfect for every contract written. Advanced features of the newest version of the ABI will require manual construction of the ABI, and odd and advanced C++ patterns could capsize the generators type deductions. So having a good knowledge of how to write an ABI should be an essential piece of knowledge of a smart contract writer.
-- Please refer to [developers.eos.io "How to Write an ABI File"](https://developers.eos.io/eosio-cpp/docs/how-to-write-an-abi) to learn about the different sections of an ABI.
+- Please refer to [developers.eos.io "How to Write an ABI File"](https://developers.eos.io/eosforce-cpp/docs/how-to-write-an-abi) to learn about the different sections of an ABI.
 
 ### Adding Ricardian Contracts and Clauses to ABI
 - As of EOSIO.CDT v1.4.0 the ABI generator will try to automatically import contracts and clauses into the generated ABI.  There are a few caveats to this, one is a strict naming policy of the files and an HTML tag used to mark each Ricardian contract and each clause.
 - The Ricardian contracts should be housed in a file with the name <contract name>.contracts.md and the clauses should be in a file named <contract name>.clauses.md.
  - For each Ricardian contract the header `<h1 class="contract">ActionName</h1>` should be used, as this directs the ABI generator to attach this Ricardian contract to the specified action.
  - For each Ricardian clause the header `<h1 class="clause">ClauseID</h1>` should be used, as this directs the ABI generator to the clause id and the subsequent body.
- - The option `-R` has been added to eosio-cpp and eosio-abigen to add "resource" paths to search from, so you can place these files in any directory structure you like and use `-R<path to file>` in the same vein as `-I` for include paths.
+ - The option `-R` has been added to eosforce-cpp and eosforce-abigen to add "resource" paths to search from, so you can place these files in any directory structure you like and use `-R<path to file>` in the same vein as `-I` for include paths.
  - To see these in use please see ./examples/hello/hello.contracts.md and ./examples/hello/hello.clauses.md.
 
 
