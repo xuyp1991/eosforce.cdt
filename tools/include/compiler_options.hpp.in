@@ -549,7 +549,7 @@ static Options CreateOptions(bool add_defaults=true) {
       copts.emplace_back("-I"+sysroot_opt+"/include/libcxx");
       copts.emplace_back("-I"+sysroot_opt+"/include/libc");
 
-      // only allow capi for native builds and for eosio-cc
+      // only allow capi for native builds and for eosforce-cc
       if (fnative_opt) {
         copts.emplace_back("-I"+sysroot_opt+"/include/eosiolib/capi");
         copts.emplace_back("-I"+sysroot_opt+"/include/eosiolib/native");

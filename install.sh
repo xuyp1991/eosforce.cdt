@@ -54,7 +54,7 @@
    }
 
    install_symlinks() {
-		printf "\\n\\tInstalling EOSIO.CDT Binary Symlinks\\n\\n"
+		printf "\\n\\tInstalling EOSForce.CDT Binary Symlinks\\n\\n"
       create_symlink "llvm-ranlib eosforce-ranlib"
       create_symlink "llvm-ar eosforce-ar"
       create_symlink "llvm-objdump eosforce-objdump"
