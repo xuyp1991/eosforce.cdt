@@ -1,6 +1,6 @@
-# FORCEIO.CDT (Contract Development Toolkit)
+# EOSFORCE.CDT (Contract Development Toolkit)
 
-FORCEIO.CDT is a toolchain for WebAssembly (WASM) and set of tools to facilitate contract writing for the EOSForce.
+EOSFORCE.CDT is a toolchain for WebAssembly (WASM) and set of tools to facilitate contract writing for the EOSForce.
 
 ### Guided Installation (Building from Scratch)
 ```sh
