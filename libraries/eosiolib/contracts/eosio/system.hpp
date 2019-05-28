@@ -11,6 +11,8 @@ namespace eosio {
     extern "C" {
       __attribute__((eosio_wasm_import, noreturn))
       void eosio_exit( int32_t code );
+      __attribute__((eosio_wasm_import))
+      uint32_t current_block_num();
     }
   }
 
@@ -53,4 +55,8 @@ namespace eosio {
    *  @return time in microseconds from 1970 of the current block as a block_timestamp
    */
    block_timestamp current_block_time();
+
+   inline uint32_t current_block_num() {
+      return internal_use_do_not_use::current_block_num();
+   }
 }
