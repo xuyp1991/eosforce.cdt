@@ -83,7 +83,7 @@ extern "C" {
     *
     *  @return time in seconds from 1970 of the current block
     */
-   __attribute__((eosio_wasm_import))
+   //__attribute__((eosio_wasm_import))
    inline uint32_t  now() {
       return (uint32_t)( current_time() / 1000000 );
    }
@@ -107,6 +107,7 @@ extern "C" {
    *  @param typ - config typ id
    *  @return - num config by typ
    */
+  __attribute__((eosio_wasm_import))
    int64_t get_num_config_on_chain( uint64_t typ );
 
 #ifdef __cplusplus

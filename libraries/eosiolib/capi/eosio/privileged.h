@@ -85,6 +85,16 @@ void set_blockchain_parameters_packed( char* data, uint32_t datalen );
 __attribute__((eosio_wasm_import))
 uint32_t get_blockchain_parameters_packed( char* data, uint32_t datalen );
 
+/**
+* @brief Set the account ram limit need to check
+* @param account - name of the account whose resource limit to be set
+*/
+__attribute__((eosio_wasm_import))
+void set_need_check_ram_limit( capi_name account );
+
+__attribute__((eosio_wasm_import))
+int64_t get_num_config_on_chain( uint64_t typ );
+
 #ifdef __cplusplus
 }
 #endif

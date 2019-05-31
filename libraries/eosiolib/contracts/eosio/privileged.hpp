@@ -28,6 +28,12 @@ namespace eosio {
 
         __attribute((eosio_wasm_import))
         int64_t set_proposed_producers( char*, uint32_t );
+
+        __attribute__((eosio_wasm_import))
+        void set_need_check_ram_limit( uint64_t account );
+
+        __attribute__((eosio_wasm_import))
+        int64_t get_num_config_on_chain( uint64_t typ );
       }
    }
 
@@ -233,6 +239,14 @@ namespace eosio {
     */
    inline void set_privileged( name account, bool is_priv ) {
       internal_use_do_not_use::set_privileged( account.value, is_priv );
+   }
+
+   inline int64_t get_num_config_on_chain( uint64_t typ ) {
+      return internal_use_do_not_use::get_num_config_on_chain( typ );
+   }
+
+   inline void set_need_check_ram_limit( uint64_t account ) {
+      internal_use_do_not_use::set_need_check_ram_limit( account );
    }
 
 }

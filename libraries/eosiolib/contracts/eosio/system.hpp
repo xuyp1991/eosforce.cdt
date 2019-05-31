@@ -13,6 +13,8 @@ namespace eosio {
       void eosio_exit( int32_t code );
       __attribute__((eosio_wasm_import))
       uint32_t current_block_num();
+      __attribute__((eosio_wasm_import))
+      uint64_t current_time();
     }
   }
 
@@ -58,5 +60,15 @@ namespace eosio {
 
    inline uint32_t current_block_num() {
       return internal_use_do_not_use::current_block_num();
+   }
+
+   /**
+    *  Get time (rounded down to the nearest second) of the current block (i.e. the block including this action)
+    *
+    *  @return time in seconds from 1970 of the current block
+    */
+   //__attribute__((eosio_wasm_import))
+   inline uint32_t  now() {
+      return (uint32_t)( internal_use_do_not_use::current_time() / 1000000 );
    }
 }
