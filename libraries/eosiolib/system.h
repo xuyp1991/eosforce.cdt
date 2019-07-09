@@ -92,6 +92,7 @@ extern "C" {
     *  Return curr block num
     *  @return - current block num
     */
+   __attribute__((eosio_wasm_import))
    uint32_t  current_block_num();
 
    /**
@@ -99,6 +100,7 @@ extern "C" {
     *  @param func_code - func code
     *  @return - 0 to not open, 1 to has open
     */
+   __attribute__((eosio_wasm_import))
    int is_func_open( uint64_t func_code );
 
    /**
@@ -106,6 +108,7 @@ extern "C" {
    *  @param typ - config typ id
    *  @return - num config by typ
    */
+   __attribute__((eosio_wasm_import))
    int64_t get_num_config_on_chain( uint64_t typ );
 
 #ifdef __cplusplus

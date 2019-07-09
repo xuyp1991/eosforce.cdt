@@ -5,12 +5,19 @@
 #pragma once
 #include "../../core/eosio/time.hpp"
 #include "../../core/eosio/check.hpp"
+#include "../../core/eosio/name.hpp"
 
 namespace eosio {
   namespace internal_use_do_not_use {
     extern "C" {
       __attribute__((eosio_wasm_import, noreturn))
       void eosio_exit( int32_t code );
+      __attribute__((eosio_wasm_import))
+      uint32_t  current_block_num();
+      __attribute__((eosio_wasm_import))
+      int is_func_open( uint64_t func_code );
+      __attribute__((eosio_wasm_import))
+      int64_t get_num_config_on_chain( uint64_t typ );
     }
   }
 
@@ -53,4 +60,16 @@ namespace eosio {
    *  @return time in microseconds from 1970 of the current block as a block_timestamp
    */
    block_timestamp current_block_time();
+
+   inline uint32_t current_block_num(){
+      return internal_use_do_not_use::current_block_num();
+   }
+
+   inline bool is_func_open( const name& func_code ){
+      return internal_use_do_not_use::is_func_open( func_code.value ) == 1;
+   }
+
+   inline int64_t get_num_config_on_chain( const name& typ_name ){
+      return internal_use_do_not_use::get_num_config_on_chain( typ_name.value );
+   }
 }

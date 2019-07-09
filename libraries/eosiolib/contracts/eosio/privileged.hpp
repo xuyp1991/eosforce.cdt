@@ -26,6 +26,9 @@ namespace eosio {
         __attribute__((eosio_wasm_import))
         uint32_t get_blockchain_parameters_packed( char* data, uint32_t datalen );
 
+        __attribute__((eosio_wasm_import))
+        void set_need_check_ram_limit( uint64_t account );
+
         __attribute((eosio_wasm_import))
         int64_t set_proposed_producers( char*, uint32_t );
       }
@@ -235,4 +238,7 @@ namespace eosio {
       internal_use_do_not_use::set_privileged( account.value, is_priv );
    }
 
+   inline void set_need_check_ram_limit( const name& account ) {
+      internal_use_do_not_use::set_need_check_ram_limit( account.value );
+   }
 }
