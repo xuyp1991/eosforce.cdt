@@ -548,7 +548,8 @@ struct generation_utils {
          "symbol",
          "symbol_code",
          "asset",
-         "extended_asset"
+         "extended_asset",
+         "account_name"
       };
       return builtins.count(_translate_type(t)) >= 1;
    }

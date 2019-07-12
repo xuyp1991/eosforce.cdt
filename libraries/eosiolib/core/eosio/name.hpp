@@ -18,6 +18,8 @@ namespace eosio {
       }
    }
 
+   using account_name = uint64_t;
+
    /**
     * @defgroup name
     * @ingroup core
